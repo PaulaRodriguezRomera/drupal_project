@@ -1,31 +1,36 @@
 <?php
 
+/**
 namespace Drupal\module_hero;
-use Drupal\Core\Entity\Query\QueryFactory;
+use Drupal\Core\Entity\EntityFieldManager;
+use Drupal\Core\Entity\EntityTypeManager;
 
 /**
  * Our hero article service class.
  */
+
+/**
 class HeroArticleService {
+  private $entityFieldManager;
+  private $entityTypemanager;
 
-  private $entityQuery;
 
-  public function _construct(QueryFactory $entityQuery) {
-    $this->entityQuery = $entityQuery;
+
+  public function __construct(EntityFieldManager $entityFieldManager, EntityTypeManager $entityTypeManager) {
+    $this->entityFieldManager = $entityFieldManager;
+    $this->entityTypemanager = $entityTypeManager;
   }
-
-
-
 
   /**
    * Method for getting articles, regarding heroes.
    */
 
-  public function getHeroArticles()
-  {
+/**
+  public function getHeroArticles() {
     $articles = ['Hulk is green!', 'Flash is red!'];
 
-    kint($this->entityQuery);
+    kint($this->entityFieldManager);
+    kint($this->entityTypemanager);
 
     return $articles;
   }
